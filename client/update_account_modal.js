@@ -27,7 +27,11 @@ Template.updateAccountModalInner.helpers({
 		if (!this.roles)
 			return allRoles;
 		return _.difference(allRoles, this.roles);
-	}
+	},
+
+    isTutor: function() {
+        this.roles.indexOf('tutor') >= 0;
+    }
 });
 
 Template.updateAccountModalInner.events({

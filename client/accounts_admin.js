@@ -28,7 +28,11 @@ Template.accountsAdmin.helpers({
 
 	myself: function(userId) {
 		return Meteor.userId() === userId;
-	}
+	},
+
+    isTutor: function() {
+        return this.roles != null && this.roles.indexOf('tutor') >= 0;
+    }
 });
 
 // search no more than 2 times per second
@@ -53,6 +57,12 @@ Template.accountsAdmin.events({
 
     'click .glyphicon-pencil': function(event, template) {
 		Session.set('userInScope', this);
+    },
+
+    'change .toggleActive': function(event) {
+        Meteor.call('updateTutor', this._id, event.currentTarget.checked, function (error) {
+            Meteor.announceSave(error);
+        });
     }
 });
 
