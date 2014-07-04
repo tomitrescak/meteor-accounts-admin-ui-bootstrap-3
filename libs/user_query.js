@@ -15,7 +15,7 @@ filteredUserQuery = function(userId, filter) {
 			]
 		}, {sort: {emails: 1}, limit: queryLimit});
 	} else {
-		users = Meteor.users.find({}, {sort: {emails: 1}, limit: queryLimit});
+		users = Meteor.users.find({roles: { $in : ['tutor']} }, {sort: {emails: 1}, limit: queryLimit});
 	}
 	return users;
 };

@@ -6,6 +6,6 @@
 	"version": "0.2.6",
 	"git": "https://github.com/hharnisc/meteor-accounts-admin-ui-bootstrap-3.git",
 	"packages": {
-		"roles": "1.2.8"
+		"roles": "1.3.0"
 	}
 }

@@ -24,6 +24,7 @@ Template.deleteAccountModalInner.helpers({
 
 Template.deleteAccountModalInner.events({
 	'click .btn-danger': function(event, template) {
+        if (!confirm('Are you sure? This will also delete all user records!')) return;
 		Meteor.call('deleteUser', this._id, function(error) {
 			if (error) {
 				// optionally use a meteor errors package

@@ -6,7 +6,12 @@ Meteor.methods({
 
 		if (user._id == userId)
 			throw new Meteor.Error(422, 'You can\'t delete yourself.');
-		
+
+        // remove all records of the user
+        Settings.remove({userId: userId});
+        UserProblems.remove({userId: userId});
+
+
 		// remove the user
 		Meteor.users.remove(userId);
 	},
